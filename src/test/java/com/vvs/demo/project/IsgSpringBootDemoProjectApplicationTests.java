@@ -1,4 +1,4 @@
-package com.vvs.demoProject;
+package com.vvs.demo.project;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
