@@ -6,7 +6,6 @@ import com.vvs.demo.project.dto.response.RentalResponseDto;
 import com.vvs.demo.project.model.Rental;
 import com.vvs.demo.project.service.CarService;
 import com.vvs.demo.project.service.RentalService;
-import com.vvs.demo.project.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.validation.Valid;
@@ -28,7 +27,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class RentalController {
     private final DtoMapper<Rental, RentalRequestDto, RentalResponseDto> rentalMapper;
     private final RentalService rentalService;
-    private final UserService userService;
     private final CarService carService;
 
     @PostMapping
