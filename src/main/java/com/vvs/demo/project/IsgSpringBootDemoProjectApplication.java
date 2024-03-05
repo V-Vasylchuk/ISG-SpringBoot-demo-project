@@ -1,4 +1,4 @@
-package com.vvs.demoProject;
+package com.vvs.demo.project;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
