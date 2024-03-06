@@ -19,6 +19,8 @@
         <java.version>17</java.version>
         <slf4j.version>2.0.12</slf4j.version>
         <swagger.version>2.3.0</swagger.version>
+        <jjwt.version>0.9.1</jjwt.version>
+        <spring-security-config.version>6.2.1</spring-security-config.version>
     </properties>
 
     <dependencies>
@@ -29,6 +31,24 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring-security-config.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>${jjwt.version}</version>
         </dependency>
         <dependency>
             <groupId>com.mysql</groupId>
