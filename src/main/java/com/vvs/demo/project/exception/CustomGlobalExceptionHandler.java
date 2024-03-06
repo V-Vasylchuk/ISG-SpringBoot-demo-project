@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -30,15 +29,15 @@ public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler
                 .getAllErrors()
                 .stream()
                 .map(this::getErrorMessage)
-                .collect(Collectors.toList());
+                .toList();
         body.put("errors", errors);
         return new ResponseEntity<>(body, headers, status);
     }
 
     private String getErrorMessage(ObjectError objectError) {
-        if (objectError instanceof FieldError) {
-            String field = ((FieldError) objectError).getField();
-            return field + ", " + objectError.getDefaultMessage();
+        if (objectError instanceof FieldError fieldError) {
+            return String.format("'%s', '%s' !",
+                    fieldError.getField(), objectError.getDefaultMessage());
         }
         return objectError.getDefaultMessage();
     }

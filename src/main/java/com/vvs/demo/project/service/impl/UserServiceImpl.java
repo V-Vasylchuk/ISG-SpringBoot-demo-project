@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findById(Long id) {
         return userRepository.findById(id).orElseThrow(() ->
-                new DataProcessingException("Can't find user by id: " + id));
+                new DataProcessingException("Can't find user by id: '%s'", id));
     }
 
     @Override
@@ -47,8 +47,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public User update(User user) {
         userRepository.findById(user.getId()).orElseThrow(() ->
-                new DataProcessingException(
-                        String.format("Not found user with id: %s for update", user.getId())));
+               new DataProcessingException("Not found user with id: %s for update", user.getId()));
         return userRepository.save(user);
     }
 }
