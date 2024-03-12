@@ -10,10 +10,12 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.Accessors;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Accessors(chain = true)
 @Table(name = "rentals")

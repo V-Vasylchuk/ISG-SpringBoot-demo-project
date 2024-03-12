@@ -4,15 +4,19 @@ import com.vvs.demo.project.dto.mapper.DtoMapper;
 import com.vvs.demo.project.dto.request.RentalRequestDto;
 import com.vvs.demo.project.dto.response.RentalResponseDto;
 import com.vvs.demo.project.model.Rental;
+import com.vvs.demo.project.model.User;
 import com.vvs.demo.project.service.CarService;
 import com.vvs.demo.project.service.RentalService;
+import com.vvs.demo.project.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.validation.Valid;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,6 +32,7 @@ public class RentalController {
     private final DtoMapper<Rental, RentalRequestDto, RentalResponseDto> rentalMapper;
     private final RentalService rentalService;
     private final CarService carService;
+    private final UserService userService;
 
     @PostMapping
     @Operation(summary = "Add a new rental")
@@ -38,6 +43,19 @@ public class RentalController {
                                 .toModel(rentalRequestDto)));
         carService.decreaseInventory(rentalResponseDto.getCarId(), 1); // One car for testing
         return rentalResponseDto;
+    }
+
+    @GetMapping("/{id}")
+    @Operation(summary = "Get by id")
+    public RentalResponseDto getById(Authentication authentication,
+                                     @Parameter(description = "Rental's id to find it")
+                                     @PathVariable Long id) {
+        User user = userService.findByEmail(authentication.getName()).get();
+        if (user.getRole() == User.Role.CUSTOMER && !Objects.equals(user.getId(),
+                rentalService.getById(id).getUser().getId())) {
+            throw new RuntimeException("Can't get by this id: " + id);
+        }
+        return rentalMapper.toDto(rentalService.getById(id));
     }
 
     @GetMapping

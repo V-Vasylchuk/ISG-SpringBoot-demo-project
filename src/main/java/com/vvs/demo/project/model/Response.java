@@ -1,9 +1,11 @@
 package com.vvs.demo.project.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 public class Response {
     private String timestamp;
