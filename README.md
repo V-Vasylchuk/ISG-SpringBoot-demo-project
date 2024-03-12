@@ -39,3 +39,25 @@ Specify the number of steps to roll back.
 For example: `liquibase --changeLogFile=db.changelog-master.yaml rollbackCount 1` .
 This will roll back the last applied change.
 * Confirm Rollback: Confirm that the migration has been rolled back to the desired state by checking the database state.
+
+---------------------------------------------------------------------------------------------------------
+
+## DynamoDB
+This guide will help you set up your environment for using Amazon DynamoDB.
+
+#### Step 1: Create a DynamoDB Table
+1. Log in to the AWS Console at [AWS](https://aws.amazon.com/).
+2. Navigate to the DynamoDB service.
+3. Click on "Create table."
+4. Enter the table name and configure it according to your needs.
+5. Click on "Create table."
+
+#### Step 2: Configure Access
+1. In the AWS Console, navigate to the IAM service.
+2. Create or select a role with access to DynamoDB.
+3. Create access key.
+
+### Step 3: Configure Your Application
+1. Insert your AWS access credentials(keys) and region into the configuration file or environment.
+2. Change table name in [DynamoClient](src/main/java/com/vvs/demo/project/aws/DynamoClient.java) for your table name.
+3. Run your application and verify that it interacts correctly with the DynamoDB table.

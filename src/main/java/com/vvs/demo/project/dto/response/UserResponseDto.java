@@ -3,10 +3,12 @@ package com.vvs.demo.project.dto.response;
 import com.vvs.demo.project.model.User;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
 @Getter
 @Setter
+@ToString
 @Accessors(chain = true)
 public class UserResponseDto {
     private Long id;

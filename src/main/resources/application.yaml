@@ -19,3 +19,8 @@ security:
     token:
       secret-key: secret
       expire-length: 3600000
+
+aws:
+  region: your_region
+  accessKey: your_key
+  secretAccessKey: your_secret_key
