@@ -41,7 +41,7 @@ class CustomUserDetailsServiceTest {
                 .setLastName(USER_LAST_NAME)
                 .setEmail(TEST_EMAIL)
                 .setPassword(PASSWORD)
-                .setRole(User.Role.CUSTOMER);;
+                .setRole(User.Role.CUSTOMER);
 
         when(userService.findByEmail(email)).thenReturn(Optional.of(user));
 

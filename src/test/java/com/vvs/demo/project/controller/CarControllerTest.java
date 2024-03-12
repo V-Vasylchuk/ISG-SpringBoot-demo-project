@@ -1,5 +1,6 @@
 package com.vvs.demo.project.controller;
 
+import com.vvs.demo.project.AbstractTestcontainers;
 import com.vvs.demo.project.model.Car;
 import com.vvs.demo.project.service.CarService;
 import io.restassured.http.ContentType;
@@ -11,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -30,7 +32,8 @@ import static org.springframework.security.test.web.servlet.setup.SecurityMockMv
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class CarControllerTest {
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+public class CarControllerTest extends AbstractTestcontainers {
     private static final Long CAR_ID = 1L;
 
     @Autowired

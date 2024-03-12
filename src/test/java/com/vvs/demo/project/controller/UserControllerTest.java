@@ -1,5 +1,6 @@
 package com.vvs.demo.project.controller;
 
+import com.vvs.demo.project.AbstractTestcontainers;
 import com.vvs.demo.project.dto.mapper.UserMapper;
 import com.vvs.demo.project.dto.response.UserResponseDto;
 import com.vvs.demo.project.model.User;
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 
@@ -21,7 +23,8 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-public class UserControllerTest {
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+public class UserControllerTest extends AbstractTestcontainers {
     private UserController userController;
 
     @Mock

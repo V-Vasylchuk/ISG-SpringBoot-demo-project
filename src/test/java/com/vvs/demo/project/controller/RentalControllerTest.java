@@ -1,5 +1,6 @@
 package com.vvs.demo.project.controller;
 
+import com.vvs.demo.project.AbstractTestcontainers;
 import com.vvs.demo.project.dto.mapper.DtoMapper;
 import com.vvs.demo.project.dto.request.RentalRequestDto;
 import com.vvs.demo.project.dto.response.RentalResponseDto;
@@ -13,6 +14,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.security.core.Authentication;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -25,7 +27,8 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-public class RentalControllerTest {
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+public class RentalControllerTest extends AbstractTestcontainers {
     private MockMvc mockMvc;
 
     @Mock
