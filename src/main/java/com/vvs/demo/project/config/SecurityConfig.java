@@ -37,7 +37,8 @@ public class SecurityConfig {
                 .addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class)
                 .userDetailsService(userDetailsService)
                 .authorizeHttpRequests(auth -> auth.requestMatchers(
-                                HttpMethod.POST, "/register", "/login").permitAll()
+                                HttpMethod.POST, "/register", "/login",
+                                "/s3/upload").permitAll()
                         .requestMatchers("/healthcheck", "/swagger-ui/**", "/swagger-ui.html",
                                 "/v3/api-docs/**").permitAll()
                         .requestMatchers("/users/me")

@@ -39,3 +39,22 @@ Specify the number of steps to roll back.
 For example: `liquibase --changeLogFile=db.changelog-master.yaml rollbackCount 1` .
 This will roll back the last applied change.
 * Confirm Rollback: Confirm that the migration has been rolled back to the desired state by checking the database state.
+
+--------------------------------------------------------------------------------------------------------
+
+## AWS S3 bucket
+### Step 1: Create a S3 bucket
+1. Log in to the AWS Console at [AWS](https://aws.amazon.com/).
+2. Navigate to the S3 service.
+3. Click on "Create bucket."
+
+#### Step 2: Configure Access
+1. In the AWS Console, navigate to the IAM service.
+2. Create or select a role with access to S3.
+3. Create access key.
+
+### Upload file:
+1. First you need set credentials in [application.yaml](src/main/resources/application.yaml) file.
+2. Run application and use Postman for uploading file into your bucket.
+3. Use a next API: http://localhost:8080/s3/upload, method `POST`.
+4. Change `body` to `form-data`, `key` name like `file` and use custom `Content-Type`: `multipart/form-data; boundary=----WebKitFormBoundaryp7MA4YWxkTrZu0gW`
