@@ -19,3 +19,9 @@ security:
     token:
       secret-key: secret
       expire-length: 3600000
+
+aws:
+  accessKey: YOUR_IAM_ACCESS_KEY
+  secretAccessKey: YOUR_IAM_SECRET_ACCESS_KEY
+  bucketName: YOUR_BUCKET_NAME
+  region: YOUR_REGION_ON_AWS

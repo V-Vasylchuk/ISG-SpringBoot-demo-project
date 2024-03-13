@@ -23,6 +23,8 @@
         <spring-security-config.version>6.2.1</spring-security-config.version>
         <jacoco.version>0.8.11</jacoco.version>
         <testcontainers.version>1.19.7</testcontainers.version>
+        <sofware.amazon.awssak.version>2.25.8</sofware.amazon.awssak.version>
+        <aws.java.sdk.s3.version>1.12.677</aws.java.sdk.s3.version>
     </properties>
 
     <dependencyManagement>
@@ -34,11 +36,27 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>software.amazon.awssdk</groupId>
+                <artifactId>bom</artifactId>
+                <version>${sofware.amazon.awssak.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
 
     <dependencies>
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>s3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-s3</artifactId>
+            <version>${aws.java.sdk.s3.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
