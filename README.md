@@ -39,3 +39,14 @@ Specify the number of steps to roll back.
 For example: `liquibase --changeLogFile=db.changelog-master.yaml rollbackCount 1` .
 This will roll back the last applied change.
 * Confirm Rollback: Confirm that the migration has been rolled back to the desired state by checking the database state.
+
+------------------------------------------------------------------------------------------------------------------------
+
+## Email notification
+
+#### Configuration
+1. First you need to create AppPassword in your gmail account using the following path:
+> `Login to Gmail` > `Manage your Google Account` > `Security` > `App Passwords` > `Provide your login password` > `Select app with a custom name` > `Click on Generate`
+2. Copy generated password and paste that to [application.yaml](src/main/resources/application.yaml) in a required field, don't forget about `username` too
+3. In [AuthenticationController](src/main/java/com/vvs/demo/project/controller/AuthenticationController.java) you can change `RECIPIENT_EMAIL` 
+or use [EmailTestController](src/main/java/com/vvs/demo/project/controller/EmailTestController.java) for testing

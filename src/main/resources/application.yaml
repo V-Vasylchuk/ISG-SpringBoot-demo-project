@@ -9,6 +9,17 @@ spring:
       ddl-auto: validate
   jooq:
     sql-dialect: org.hibernate.dialect.MySQL8Dialect
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: <Login User to SMTP server>
+    password: <Login password to SMTP server>
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 
 springdoc:
   swagger-ui:
@@ -19,3 +30,8 @@ security:
     token:
       secret-key: secret
       expire-length: 3600000
+
+aws:
+  region: your_region
+  accessKey: your_key
+  secretAccessKey: your_secret_key
